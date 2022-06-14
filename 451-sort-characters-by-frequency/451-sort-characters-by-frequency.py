@@ -2,7 +2,8 @@ class Solution:
     def frequencySort(self, s: str) -> str:
         initial = {}
         freqMap = {}
-        result = ""
+        resultList = []
+        result = []
         
         for i in range(len(s)):
             if s[i] not in initial: 
@@ -19,6 +20,6 @@ class Solution:
         for key in reversed(sorted(freqMap.keys())):
             currList = freqMap.get(key)
             for i in range(len(currList)):
-                result += (currList[i] * key)
+                resultList.append(currList[i] * key)
         
-        return result
+        return "".join(resultList)
