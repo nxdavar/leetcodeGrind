@@ -1,14 +1,25 @@
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
-        other = [0] * len(nums)
+        k = k % len(nums)
         
-        for i in range(len(nums)):
-            new_pos = i + k
-            if new_pos >= len(nums): 
-                new_pos = new_pos % len(nums)
-            other[new_pos] = nums[i]
-        
-        
-        for i in range(len(other)): 
-            nums[i] = other[i]
-        
+        l = 0
+        r = len(nums) - 1
+        while l < r: 
+            nums[l], nums[r] = nums[r], nums[l]
+            l += 1
+            r -= 1
+    
+    
+        l = 0
+        r = k - 1
+        while l < r: 
+            nums[l], nums[r] = nums[r], nums[l]
+            l += 1
+            r -= 1
+    
+        l = k
+        r = len(nums) - 1
+        while l < r: 
+            nums[l], nums[r] = nums[r], nums[l]
+            l += 1
+            r -= 1
