@@ -4,20 +4,16 @@ class Solution:
         intervals.sort() 
         
         for i in range(len(intervals)): 
-            curr = intervals[i]
-            
-            index = 0
+            curr = intervals[i]   
             changed = False
-            while index < len(result): 
-                if result[index][1] <= curr[0]: 
-                    result[index] = curr
-                    result.sort()
-                    changed = True
-                    break
-                
-                index += 1
+            if len(result) > 0 and result[0] <= curr[0]: 
+                result[0] = curr[1]
+                result.sort()
+                changed = True
             
             if not changed: 
-                result.append(curr)
-        
+                result.append(curr[1])
+                result.sort()
+    
+        # print(result)
         return len(result)
